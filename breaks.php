@@ -1,4 +1,7 @@
 <?php
+    // Include the db connect code
+    include('dbconnect.php');
+
     // prepare the query
     $breaks_stmt = $dbconnect->prepare("SELECT * FROM break");
 
@@ -13,7 +16,7 @@
 
     // Now we can iterate through the breaks array and display each
     // First, we should check if there are any results
-    if($breaks->num_rows > 0) {
+    if($breaks_result->num_rows > 0) {
         // If there are results, we use a foreach loop to display
         // Each time we loop, the result is put into the $break variable
         foreach($breaks as $break) {

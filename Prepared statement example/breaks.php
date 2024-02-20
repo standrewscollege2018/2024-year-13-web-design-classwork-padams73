@@ -1,3 +1,9 @@
+<!-- This page demonstrates how to run a simple query using
+prepared statements, displaying multiple results.
+
+It connects to the breaks database, which has one table in it.
+-->
+
 <?php
     // Include the db connect code
     include('dbconnect.php');
@@ -20,10 +26,12 @@
         // If there are results, we use a foreach loop to display
         // Each time we loop, the result is put into the $break variable
         foreach($breaks as $break) {
+            $breakID = $break['breakID'];
             $name = $break['name'];
-            $description = $break['description'];
-            echo "<h1>$name</h1>";
-            echo "<p>$description</p>";
+            
+            // The name of the break links to the break.php page
+            echo "<a href='break.php?breakID=$breakID'><h1>$name</h1></a>";
+
         }
     } else {
         // If there are no results, display a message
